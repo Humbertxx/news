@@ -7,7 +7,7 @@ class NewsSpider(scrapy.Spider):
     #start_urls = ['https://finance.yahoo.com/topic/stock-market-news/']  
     'https://query1.finance.yahoo.com/v7/finance/spark?symbols=AMZN%2CQS%2CICE%2CCORZ%2CHSAI%2CAVAV%2CENPH%2CEQIX%2CXPEV%2CVSEC%2CETSY%2CRELY%2CNVDA%2CLCID%2CNU%2CCYN%2CRKLB%2C1810.HK&range=1d&interval=5m&indicators=close&includeTimestamps=false&includePrePost=false&corsDomain=finance.yahoo.com&.tsrc=finance'
     
-    
+    ## parser that gets publisher,date, link, ticker, source if it has link it will navigate to the next one
     def parse(self, response): 
         for headline in response.css('li.stream-item.story-item.yf-1drgw5l'):    
             link = headline.css('a.subtle-link::attr(href)').get()    
