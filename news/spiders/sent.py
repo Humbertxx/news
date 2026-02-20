@@ -15,6 +15,7 @@ class NewsSpider(scrapy.Spider):
         elapsed = time.perf_counter() - self._t0
         self.logger.info(f"Spider finished in {elapsed:.2f} seconds. Reason: {reason}")      
     
+    ### parser getting text inside the text and also the link, title, ticker, and source
     def parse(self, response): 
         for headline in response.css('li.stream-item.story-item.yf-1drgw5l'):    
             link = headline.css('a.subtle-link::attr(href)').get()    
